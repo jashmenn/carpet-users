@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "carpet-users"
     gem.summary = %Q{a rails3 engine for users}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.description = %Q{a rails3 engine for users. uses authlogic and facebooker for facebook connect}
     gem.email = "nate@natemurray.com"
     gem.homepage = "http://github.com/jashmenn/carpet-users"
     gem.authors = ["Nate Murray"]
