@@ -12,6 +12,7 @@ class CreatePeople < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :people, :email
   end
 
   def self.down
