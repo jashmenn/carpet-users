@@ -23,5 +23,7 @@ class CarpetUsersGenerator < Rails::Generators::Base
     migration_template 'create_users_migration.rb', 'db/migrate/create_users.rb'
     sleep 1.1 
     migration_template 'create_sessions_migration.rb', 'db/migrate/create_sessions.rb'
+    sleep 1.1 
+    migration_template 'create_people_migration.rb', 'db/migrate/create_people.rb'
   end
 end
