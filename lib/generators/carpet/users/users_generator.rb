@@ -1,7 +1,8 @@
 require 'rails/generators'
 require 'rails/generators/migration'
 
-class CarpetUsersGenerator < Rails::Generators::Base
+module Carpet
+class UsersGenerator < Rails::Generators::Base
   include Rails::Generators::Migration
 
   def self.source_root
@@ -26,4 +27,5 @@ class CarpetUsersGenerator < Rails::Generators::Base
     sleep 1.1 
     migration_template 'create_people_migration.rb', 'db/migrate/create_people.rb'
   end
+end
 end
