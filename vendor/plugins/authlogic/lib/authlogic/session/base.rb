@@ -32,6 +32,8 @@ module Authlogic
       include Id
       include Validation
       include PriorityRecord
+      
+      include ActiveModel::Conversion
     end
   end
 end

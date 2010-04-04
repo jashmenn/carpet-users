@@ -1,6 +1,7 @@
 require "test/unit"
 require "rubygems"
 require "ruby-debug"
+require "active_support/core_ext"
 require "active_record"
 require "active_record/fixtures"
 

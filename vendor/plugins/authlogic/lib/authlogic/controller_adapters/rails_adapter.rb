@@ -4,24 +4,28 @@ module Authlogic
     # provides. Similar to how ActiveRecord has an adapter for MySQL, PostgreSQL, SQLite, etc.
     class RailsAdapter < AbstractAdapter
       class AuthlogicLoadedTooLateError < StandardError; end
-      
+
       def authenticate_with_http_basic(&block)
         controller.authenticate_with_http_basic(&block)
       end
-      
+
       def cookies
         controller.send(:cookies)
       end
-      
+
       def cookie_domain
-        @cookie_domain_key ||= Rails::VERSION::STRING >= '2.3' ? :domain : :session_domain
-        ActionController::Base.session_options[@cookie_domain_key]
+        if Rails::VERSION::STRING >= "3.0.0"
+          Rails.application.config.send(:session_options)[:domain]
+        else
+          @cookie_domain_key ||= Rails::VERSION::STRING >= '2.3' ? :domain : :session_domain
+          ActionController::Base.session_options[@cookie_domain_key]
+        end
       end
-      
+
       def request_content_type
         request.format.to_s
       end
-      
+
       # Lets Authlogic know about the controller object via a before filter, AKA "activates" authlogic.
       module RailsImplementation
         def self.included(klass) # :nodoc:
@@ -32,10 +36,10 @@ module Authlogic
               " the resource_controller plugin. The solution is to require Authlogic before these other gems / plugins. Please require" +
               " authlogic first to get rid of this error.")
           end
-          
+
           klass.prepend_before_filter :activate_authlogic
         end
-        
+
         private
           def activate_authlogic
             Authlogic::Session::Base.controller = RailsAdapter.new(self)

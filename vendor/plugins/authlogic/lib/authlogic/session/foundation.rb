@@ -53,6 +53,8 @@ module Authlogic
           "#<#{self.class.name}: #{credentials.blank? ? "no credentials provided" : credentials.inspect}>"
         end
         
+        def persisted?() false end
+        
         private
           def build_key(last_part)
             last_part
