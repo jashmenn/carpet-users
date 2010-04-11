@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{carpet-users}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nate Murray"]
@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
      "app/views/users/edit.html.erb",
      "app/views/users/new.html.erb",
      "app/views/users/show.html.erb",
+     "carpet-users.gemspec",
      "config/routes.rb",
      "lib/carpet_users.rb",
      "lib/carpet_users/engine.rb",

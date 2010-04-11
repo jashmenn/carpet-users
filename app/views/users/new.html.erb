@@ -1,7 +1,14 @@
+<%= fb_connect_javascript_tag %>
 <h1>Register</h1>
+
+<fb:login-button onlogin="return;"></fb:login-button>
 
 <% form_for @user, :url => account_path do |f| %>
   <%= f.error_messages %>
   <%= render :partial => "form", :object => f %>
   <%= f.submit "Register" %>
 <% end %>
+
+<script type="text/javascript"> 
+  FB.init("<%= Rails.application.config.fb_api_key %>", "xd_receiver.html")
+</script> 
