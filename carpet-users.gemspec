@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nate Murray"]
-  s.date = %q{2010-04-08}
+  s.date = %q{2010-04-11}
   s.description = %q{a rails3 engine for users. uses authlogic and facebooker for facebook connect}
   s.email = %q{nate@natemurray.com}
   s.extra_rdoc_files = [
@@ -22,9 +22,11 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "app/controllers/authentication_controller.rb",
+     "app/controllers/fb_connect_controller.rb",
      "app/controllers/user_sessions_controller.rb",
      "app/controllers/users_controller.rb",
      "app/helpers/application_helper.rb",
+     "app/helpers/fb_connect_helper.rb",
      "app/helpers/password_resets_helper.rb",
      "app/helpers/user_session_helper.rb",
      "app/helpers/user_sessions_helper.rb",
@@ -44,6 +46,9 @@ Gem::Specification.new do |s|
      "config/routes.rb",
      "lib/carpet_users.rb",
      "lib/carpet_users/engine.rb",
+     "lib/generators/carpet/facebook/facebook_generator.rb",
+     "lib/generators/carpet/facebook/templates/create_users_migration.rb",
+     "lib/generators/carpet/facebook/templates/xd_receiver.htm",
      "lib/generators/carpet/users/templates/create_people_migration.rb",
      "lib/generators/carpet/users/templates/create_sessions_migration.rb",
      "lib/generators/carpet/users/templates/create_users_migration.rb",
@@ -180,7 +185,20 @@ Gem::Specification.new do |s|
      "vendor/plugins/authlogic/test/session_test/timeout_test.rb",
      "vendor/plugins/authlogic/test/session_test/unauthorized_record_test.rb",
      "vendor/plugins/authlogic/test/session_test/validation_test.rb",
-     "vendor/plugins/authlogic/test/test_helper.rb"
+     "vendor/plugins/authlogic/test/test_helper.rb",
+     "vendor/plugins/authlogic_facebook_connect/README.rdoc",
+     "vendor/plugins/authlogic_facebook_connect/init.rb",
+     "vendor/plugins/authlogic_facebook_connect/lib/authlogic_facebook_connect.rb",
+     "vendor/plugins/authlogic_facebook_connect/lib/authlogic_facebook_connect/acts_as_authentic.rb",
+     "vendor/plugins/authlogic_facebook_connect/lib/authlogic_facebook_connect/helper.rb",
+     "vendor/plugins/authlogic_facebook_connect/lib/authlogic_facebook_connect/session.rb",
+     "vendor/plugins/authlogic_facebook_connect/lib/authlogic_facebook_connect/version.rb",
+     "vendor/plugins/mini_fb/README.markdown",
+     "vendor/plugins/mini_fb/Rakefile",
+     "vendor/plugins/mini_fb/VERSION.yml",
+     "vendor/plugins/mini_fb/lib/mini_fb.rb",
+     "vendor/plugins/mini_fb/mini_fb.gemspec",
+     "vendor/plugins/mini_fb/test/test_mini_fb.rb"
   ]
   s.homepage = %q{http://github.com/jashmenn/carpet-users}
   s.rdoc_options = ["--charset=UTF-8"]
