@@ -26,6 +26,8 @@ class UsersGenerator < Rails::Generators::Base
     migration_template 'create_sessions_migration.rb', 'db/migrate/create_sessions.rb'
     sleep 1.1 
     migration_template 'create_people_migration.rb', 'db/migrate/create_people.rb'
+    sleep 1.1 
+    migration_template 'create_users_email_migration.rb', 'db/migrate/create_users_email.rb'
   end
 end
 end

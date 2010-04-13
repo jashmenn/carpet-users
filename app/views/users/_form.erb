@@ -1,8 +1,42 @@
-<%= form.label :login %><br />
-<%= form.text_field :login %><br />
-<br />
-<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
-<%= form.password_field :password, nil %><br />
-<br />
-<%= form.label :password_confirmation %><br />
-<%= form.password_field :password_confirmation, nil %><br />
+<table class='login'>
+  <tbody>
+    <tr>
+      <td class="label">
+        <%= form.label :login, "Username" %>:
+      </td>
+      <td>
+        <%= form.text_field :login %>
+        <span class="star">*</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">
+        <%= form.label :email, "Email" %>:
+      </td>
+      <td>
+        <%= form.text_field :email %>
+        <span class="star">*</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">  
+        <%= form.label :password, form.object.new_record? ? nil : "Change password" %>:
+      </td>
+      <td>
+        <%= form.password_field :password, {:value => nil} %>
+        <span class="star">*</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">
+        <%= form.label :password_confirmation, "Password (again)" %>:
+      </td>
+      <td>
+        <%= form.password_field :password_confirmation, {:value => nil} %>
+        <span class="star">*</span>
+      </td>
+    </tbody>
+  </table>
+<div class="small">
+  <span class="star">*</span> required field
+</div>
