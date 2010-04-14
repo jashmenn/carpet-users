@@ -1,16 +1,29 @@
 <%= fb_connect_javascript_tag %>
 
-<div class="span-12">
+<div class="span-12 account-left">
+<div class="pic">
 pic
+</div>
+<div class="login">
+Already have an account? Log in here
+<%= render :partial => "user_sessions/form" %>
+</div>
+
 </div>
 <div class="span-12 account last">
   <div class="inside">
 <h1>Log in with Facebook</h1>
 
-<fb:login-button onlogin="window.location.reload(true); "length='long'></fb:login-button>
-
+<div class="fb_connect_button">
+<%= image_tag "fb_connect.png" %>
+<%# <fb:login-button onlogin="window.location.reload(true); "length='long'></fb:login-button> %>
 <%# <fb:login-button v="2" size="large" onlogin="window.location.reload(true);">Login with Facebook</fb:login-button> %>
+</div>
 
+<hr />
+or...
+
+<h4>Register a new Account</h4>
 <% form_for @user, :url => account_path do |f| %>
   <%= f.error_messages %>
   <%= render :partial => "form", :object => f %>

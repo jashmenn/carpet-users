@@ -1,14 +1,32 @@
-<h1>Login</h1>
+<%= fb_connect_javascript_tag %>
 
-<% form_for @user_session, :url => user_session_path do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :login %><br />
-  <%= f.text_field :login %><br />
-  <br />
-  <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
-  <br />
-  <%= f.submit "Login" %>
-<% end %>
+<div class="span-12 account-left">
+<div class="pic">
+pic
+</div>
+<div class="signup">
+Need to <a href="/account/new">sign up for an account?</a>
+</div>
+
+</div>
+<div class="span-12 account last">
+  <div class="inside">
+<h1>Log in with Facebook</h1>
+
+<div class="fb_connect_button">
+<%= image_tag "fb_connect.png" %>
+<%# <fb:login-button onlogin="window.location.reload(true); "length='long'></fb:login-button> %>
+<%# <fb:login-button v="2" size="large" onlogin="window.location.reload(true);">Login with Facebook</fb:login-button> %>
+</div>
+
+<hr />
+or...
+
+<h4>Sign in</h4>
+<%= render :partial => "user_sessions/form" %>
+  </div>
+</div>
+
+<script type="text/javascript"> 
+  FB.init("<%= Rails.application.config.fb_api_key %>", "xd_receiver.html")
+</script> 
