@@ -28,6 +28,8 @@ class UsersGenerator < Rails::Generators::Base
     migration_template 'create_people_migration.rb', 'db/migrate/create_people.rb'
     sleep 1.1 
     migration_template 'create_users_email_migration.rb', 'db/migrate/create_users_email.rb'
+    sleep 1.1 
+    migration_template 'add_avatar_columns_to_user.rb', 'db/migrate/add_avatar_columns_to_user.rb'
   end
 end
 end
