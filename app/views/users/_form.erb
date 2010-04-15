@@ -1,5 +1,6 @@
 <table class='login'>
   <tbody>
+    <% if form.object.new_record? %>
     <tr>
       <td class="label">
         <%= form.label :login, "Username" %>:
@@ -9,6 +10,7 @@
         <span class="star">*</span>
       </td>
     </tr>
+    <% end %>
     <tr>
       <td class="label">
         <%= form.label :email, "Email" %>:
@@ -20,7 +22,7 @@
     </tr>
     <tr>
       <td class="label">  
-        <%= form.label :password, form.object.new_record? ? nil : "Change password" %>:
+        <%= form.label :password, form.object.new_record? ? nil : "New password" %>:
       </td>
       <td>
         <%= form.password_field :password, {:value => nil} %>
@@ -29,7 +31,7 @@
     </tr>
     <tr>
       <td class="label">
-        <%= form.label :password_confirmation, "Password (again)" %>:
+        <%= form.label :password_confirmation, form.object.new_record? ? "Password (again)" : "Confirm new password" %>:
       </td>
       <td>
         <%= form.password_field :password_confirmation, {:value => nil} %>

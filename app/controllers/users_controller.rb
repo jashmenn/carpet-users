@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  unloadable
   helper "fb_connect"
   before_filter :require_user, :only => [:show, :edit, :update]
   
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    Rails.logger.info "not wanted"
     @user = @current_user
   end
 
