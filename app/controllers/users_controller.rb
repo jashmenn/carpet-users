@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   unloadable
   helper "fb_connect"
   before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_no_user, :only => [:new, :create]
   
   def new
     @user = User.new
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user_session = UserSession.new
     if @user.save
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
