@@ -16,17 +16,21 @@ class User < ActiveRecord::Base
       login || id
   end
 
-  def check_for_password(details=nil)
-    Rails.logger.info("checking for password in user #{details.pretty_inspect}")
-    Rails.logger.info("%s %s %s %s #{self.pretty_inspect}" % [self.new_record? , self.facebook_session , self.facebook_uid , self.password.nil?])
-    if (self.new_record? && self.facebook_session && self.facebook_uid) && self.password.nil?
-      Rails.logger.info("setting a password")
-      tmp_pass = Digest::SHA1.hexdigest(Time.now.to_s + SALT)
-      self.password = tmp_pass
-      self.password_confirmation = tmp_pass
+  def check_for_facebook_values(details=nil)
+    if self.new_record? && self.facebook_session && self.facebook_uid
+
+      # check for password
+      if self.password.nil?
+        tmp_pass = Digest::SHA1.hexdigest(Time.now.to_s + SALT)
+        self.password = tmp_pass
+        self.password_confirmation = tmp_pass
+      end
+
+      # check for login -todo
+      if self.login.nil?
+        self.login = self.facebook_uid # tmp
+      end
     end
-
-
   end
 
 end
