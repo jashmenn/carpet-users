@@ -8,20 +8,6 @@ pic
 Need to <a href="/account/new">sign up for an account?</a>
 </div>
 
-<script>
- FB.Connect.get_status().waitUntilReady(function(status) {
-   switch(status) {
-   case FB.ConnectState.connected:
-     alert("yay!");
-     break;
-   case FB.ConnectState.appNotAuthorized:
-   case FB.ConnectState.userNotLoggedIn:
-     alert("need to login to fb");
-     break;
-   }
- });
-</script>
-
 </div>
 <div class="span-12 account last">
   <div class="inside">
