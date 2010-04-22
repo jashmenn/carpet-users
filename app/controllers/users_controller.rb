@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :find_user_by_current_user, :only => [:edit, :update, :destroy]
+  load_and_authorize_resource
+
   unloadable
   helper "fb_connect"
   before_filter :require_user, :only => [:show, :edit, :update]
@@ -21,16 +24,13 @@ class UsersController < ApplicationController
   end
   
   def show
-    Rails.logger.info "not wanted"
     @user = @current_user
   end
 
   def edit
-    @user = @current_user
   end
   
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       redirect_to account_url
@@ -38,4 +38,11 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+
+  private
+  def find_user_by_current_user
+    # todo, if you want moderators to edit other users this will need to change
+    @user = current_user # makes our views "cleaner" and more consistent
+  end
+
 end

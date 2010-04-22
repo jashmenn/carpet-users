@@ -1,37 +1,32 @@
-<p>
-  <b>Login:</b>
-  <%=h @user.login %>
-</p>
-
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
-
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
-
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
-
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
-
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
-
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
+<div class="span-6" id="profile">
+  <div class="avatar">
+    <%= image_tag current_user.avatar.url(:medium) %>
+  </div>
+  <div class="info">
+      <ul>
+          <li>Name:</li>
+      </ul>
+  </div>
+</div>
 
 
-<%= link_to 'Edit', edit_account_path %>
+<div class="span-18 last" id="">
+
+<% @posts.each do |post| %>
+  <%= render :partial => "posts/post_as_activity", :locals => {:post => post} %>
+<% end %>
+
+<% if @posts.size < 1 %>
+  <div class="no_activity">
+    <% if @user == current_user %>
+      You don't have any activity yet.<br />
+      Why not <%= link_to "create a post", new_user_post_path(current_user) %> or<br />
+      invite some friends?
+    <% else %>
+      <%= @user.name || @user.login %> doesn't have any activity yet.<br />
+    <% end %>
+  </div>
+<% end %>
+
+</div>
+
