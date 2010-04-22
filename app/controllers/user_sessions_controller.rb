@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+  rescue_from('Exception'){ |e| logger.info(e.to_s + e.backtrace.pretty_inspect) }
   helper "fb_connect"
   before_filter :require_user, :only => :destroy
   
@@ -18,6 +19,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Login successful!"
       redirect_back_or_default "/"
     else
+      Rails.logger.info(@user_session.errors.pretty_inspect)
       render :action => :new
     end
   end
