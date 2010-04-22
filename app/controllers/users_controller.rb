@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :find_user_by_current_user, :only => [:edit, :update, :destroy]
+  before_filter :find_user_by_identifier, :only => [:show]
   load_and_authorize_resource
 
   unloadable
@@ -24,7 +25,6 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = @current_user
   end
 
   def edit
@@ -44,5 +44,11 @@ class UsersController < ApplicationController
     # todo, if you want moderators to edit other users this will need to change
     @user = current_user # makes our views "cleaner" and more consistent
   end
+
+  def find_user_by_identifier
+    @user = User.find_by_identifier(params[:id]) || current_user
+  end
+
+
 
 end

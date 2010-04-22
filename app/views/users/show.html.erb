@@ -2,16 +2,21 @@
   <div class="avatar">
     <%= image_tag current_user.avatar.url(:medium) %>
   </div>
+  <div class="nail"></div>
   <div class="info">
       <ul>
-          <li>Name:</li>
+          <li>Name: <%= @user.best_name %></li>
       </ul>
+      how many hives saved<br />
+      karma points<br />
+      comments
   </div>
 </div>
 
 
 <div class="span-18 last" id="">
 
+<h1><%= @user.best_name %></h1>
 <% @posts.each do |post| %>
   <%= render :partial => "posts/post_as_activity", :locals => {:post => post} %>
 <% end %>
@@ -23,7 +28,7 @@
       Why not <%= link_to "create a post", new_user_post_path(current_user) %> or<br />
       invite some friends?
     <% else %>
-      <%= @user.name || @user.login %> doesn't have any activity yet.<br />
+      <%= @user.best_name %> doesn't have any activity yet.<br />
     <% end %>
   </div>
 <% end %>
