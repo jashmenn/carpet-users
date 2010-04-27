@@ -4,7 +4,7 @@ require 'andand'
 class User < ActiveRecord::Base
   validates_format_of :login, :with => /^[A-Za-z0-9_@\.\+\-]+$/, :message => "must be only numbers or letters" 
   belongs_to :person
-  has_attached_file :avatar, :styles => { :large => "230x230>", :medium => "100x100>", :thumb => "50x50>" }, :default_url => "/images/avatars/default_avatar_:style.png"
+  has_attached_file :avatar, :styles => { :large => "230x230#", :medium => "100x100#", :thumb => "50x50#" }, :default_url => "/images/avatars/default_avatar_:style.png"
   SALT = "n12kjed982nkjwe9a8njkna98dakjndniu98ykjn9871y2" # todo - mv to config otherwise this is a huge security hole b/c you pushed it to github
 
   acts_as_authentic
