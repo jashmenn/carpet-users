@@ -20,6 +20,8 @@
         // The user has logged out, and the cookie has been cleared
       }
     });
+
+    $('#logout-button').click(function() { FB.logout(); });
   };
   (function() {
     var e = document.createElement('script');
