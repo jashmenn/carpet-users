@@ -1,15 +1,17 @@
 <div class="span-6" id="profile">
   <div class="avatar">
-    <%= image_tag current_user.avatar.url(:medium) %>
+    <%= image_tag current_user.avatar.url(:large) %>
   </div>
   <div class="nail"></div>
   <div class="info">
       <ul>
           <li>Name: <%= @user.best_name %></li>
       </ul>
+      <!--
       how many hives saved<br />
       karma points<br />
       comments
+      -->
   </div>
 </div>
 
