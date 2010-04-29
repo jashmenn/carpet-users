@@ -196,7 +196,7 @@ module AuthlogicFacebook
           return
         end
 
-        self.attempted_record = klass.where(self.facebook_uid_field => self.facebook_uid).first || klass.new
+        self.attempted_record = klass.where(self.facebook_uid_field => self.facebook_uid.to_s).first || klass.new
 
         if !self.attempted_record.new_record? || self.facebook_auto_register?
           self.attempted_record.send(:"#{self.facebook_session_field}=", self.facebook_session)
