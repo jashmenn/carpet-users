@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
   # generalize_credentials_error_messages true
 
   def self.find_by_identifier(identifier)
-      find(:first, :conditions =>   ['id = ? OR login = ? OR email = ?', identifier, identifier, identifier])
+    if identifier =~ /^\d+$/
+      find(:first, :conditions => ['id = ?', identifier])
+    else
+      find(:first, :conditions => ['login = ? OR email = ?', identifier, identifier])
+    end
   end
   def to_param
       login || id
