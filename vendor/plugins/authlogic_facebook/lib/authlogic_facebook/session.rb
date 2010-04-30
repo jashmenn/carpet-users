@@ -102,7 +102,7 @@ module AuthlogicFacebook
     module Methods
       def self.included(klass)
         klass.class_eval do
-          attr_accessor :facebook_uid, :facebook_session, :facebook_name, :facebook_username
+          attr_accessor :facebook_uid, :facebook_session, :facebook_name, :facebook_username, :email
           validate :validate_by_facebook, :if => :authenticating_with_facebook?
           delegate :facebook_auto_register?, :facebook_uid_field, :facebook_session_field,
               :facebook_api_key, :facebook_secret_key, :facebook_connect_callback,
@@ -132,6 +132,7 @@ module AuthlogicFacebook
           self.facebook_session = hash[:facebook_session]
           self.facebook_name = hash[:facebook_name]
           self.facebook_username = hash[:facebook_username]
+          self.email = hash[:email]
         end
       end
 
@@ -205,6 +206,7 @@ module AuthlogicFacebook
             self.attempted_record.send(:"#{self.facebook_uid_field}=", self.facebook_uid)
             self.attempted_record.send(:"#{self.facebook_name_field}=", self.facebook_name) if self.attempted_record.respond_to? "#{self.facebook_name_field}="
             self.attempted_record.send(:"#{self.facebook_username_field}=", self.facebook_username) if self.attempted_record.respond_to?("#{self.facebook_username_field}=") && !self.facebook_username.blank?
+            self.attempted_record.send(:"email=", self.email)
 
             [:persistence, :single_access].each do |token|
               self.attempted_record.send("reset_#{token}_token") if self.attempted_record.respond_to? "#{token}_token"

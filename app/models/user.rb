@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   def check_for_facebook_values(details=nil)
     if self.new_record? && self.facebook_session && self.facebook_uid
-      Rails.logger.info("  it is a new record")
+      # Rails.logger.info("  it is a new record")
 
       # check for password
       if self.password.nil?
