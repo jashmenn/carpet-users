@@ -2,7 +2,6 @@ require 'digest/sha1'
 require 'andand'
 
 class User < ActiveRecord::Base
-  # last_request_at_threshold 10.minutes
   validates_format_of :login, :with => /^[A-Za-z0-9_@\.\+\-]+$/, :message => "must be only numbers or letters" 
   belongs_to :person
   has_attached_file :avatar, 
