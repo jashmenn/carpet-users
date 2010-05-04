@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   before_filter :find_user_by_current_user, :only => [:edit, :update, :destroy]
   before_filter :find_user_by_identifier, :only => [:show]
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :getting_started
 
   unloadable
   helper "fb_connect"
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_user, :only => [:show, :edit, :update, :getting_started]
   before_filter :require_no_user, :only => [:new, :create]
   
   def new
@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   
   def update
     if @user.update_attributes(params[:user])
+      @size = params[:size] || :thumb
       flash[:notice] = "Account updated!"
       respond_to do |format|
         format.html { redirect_to(account_url) }
@@ -42,6 +43,11 @@ class UsersController < ApplicationController
         format.html { render :action => :edit }
       end
     end
+  end
+
+  def getting_started
+    phase = params[:phase] || 1
+    render :layout => "semifocus", :action => "getting_started_phase_#{phase}"
   end
 
   private

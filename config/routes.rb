@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   # map.root :controller => "user_sessions", :action => "new"
 
+  map.connect '/account/getting_started', :controller => 'users', :action => 'getting_started'
+
   # facebook integration
   map.connect 'connect', :controller => 'login', :action => 'connect'
   map.connect '/fb/:action', :controller => 'fb_connect'

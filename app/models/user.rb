@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     :styles => { :large => "230x230#", :medium => "100x100#", :thumb => "50x50#" }, 
     :default_url => "/images/avatars/default_avatar_:style.png",
     :storage => Rails.application.config.file_storage,
-    :path => ":attachment/:id/:style/:filename", 
+    :path => Rails.application.config.paperclip_path, 
     :s3_credentials => "#{Rails.root}/config/s3.yml"
 
   SALT = "n12kjed982nkjwe9a8njkna98dakjndniu98ykjn9871y2" # todo - mv to config otherwise this is a huge security hole b/c you pushed it to github

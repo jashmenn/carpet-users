@@ -21,4 +21,8 @@ class Person < ActiveRecord::Base
       # errors.add_to_base("Must be a valid email")
       errors[:base] << "Must be a valid email."
   end
+
+  def zip_object
+    Zipcode.find_by_zip(self.zip)
+  end
 end
