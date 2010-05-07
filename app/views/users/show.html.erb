@@ -26,9 +26,9 @@
 <% if @posts.size < 1 %>
   <div class="no_activity">
     <% if @user == current_user %>
-      You don't have any activity yet.<br />
-      Why not <%= link_to "create a post", new_user_post_path(current_user) %> or<br />
-      invite some friends?
+      Just starting out?<br />
+      <%= link_to "Post some pictures", new_user_post_path(current_user) %><br />
+      of your previous captures! 
     <% else %>
       <%= @user.best_name %> doesn't have any activity yet.<br />
     <% end %>
