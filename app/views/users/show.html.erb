@@ -20,7 +20,7 @@
 
 <h1><%= @user.best_name %></h1>
 <% @posts.each do |post| %>
-  <%= render :partial => "posts/post_as_activity", :locals => {:post => post} %>
+  <%= render :partial => "posts/post_as_activity", :locals => {:activity => post} %>
 <% end %>
 
 <% if @posts.size < 1 %>
