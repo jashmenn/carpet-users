@@ -51,3 +51,13 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+desc "symlink the gem"
+task :symlink do
+  dir  = File.dirname(__FILE__)
+  base = File.basename(dir)
+  version = `cat VERSION`.strip
+  gemdir = `rvm gemdir 1.8.7`.strip
+  gem_name_version = base + '-' + version
+  sh "ln -s #{dir} #{gemdir}/gems/#{gem_name_version}"
+end
