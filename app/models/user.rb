@@ -59,4 +59,8 @@ class User < ActiveRecord::Base
      self.login
   end
 
+  def is_admin?
+    login == "nate" ? true : false
+  end
+
 end
