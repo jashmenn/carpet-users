@@ -61,7 +61,7 @@ module Authlogic
         
         before_validation
         new_session? ? before_validation_on_create : before_validation_on_update
-        validate
+        validate # <-
         ensure_authentication_attempted
                 
         if errors.size == 0

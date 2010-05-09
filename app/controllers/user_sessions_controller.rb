@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  rescue_from('Exception'){ |e| logger.info(e.to_s + e.backtrace.pretty_inspect) }
+  # rescue_from('Exception'){ |e| logger.info(e.to_s + e.backtrace.pretty_inspect) }
 
   helper "fb_connect"
   before_filter :require_user, :only => :destroy
