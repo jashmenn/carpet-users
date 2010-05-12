@@ -7,6 +7,10 @@
       <ul>
           <li>Name: <%= @user.best_name %></li>
       </ul>
+      <ul>
+          <li>Joined: <%= time_ago_in_words(@user.created_at) %> ago</li>
+      </ul>
+
       <!--
       how many hives saved<br />
       karma points<br />
