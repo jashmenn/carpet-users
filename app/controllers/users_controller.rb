@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   unloadable
   helper "fb_connect"
-  before_filter :require_user, :only => [:show, :edit, :update, :getting_started]
+  before_filter :require_user, :only => [:edit, :update, :getting_started]
   before_filter :require_no_user, :only => [:new, :create]
   
   def new

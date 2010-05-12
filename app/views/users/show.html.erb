@@ -1,6 +1,6 @@
 <div class="span-7" id="profile">
   <div class="avatar">
-    <%= image_tag current_user.avatar.url(:large) %>
+    <%= image_tag @user.avatar.url(:large) %>
   </div>
   <div class="nail"></div>
   <div class="info">
@@ -16,12 +16,22 @@
 </div>
 
 
-<div class="span-17 last" id="">
+<div class="span-17 last" id="show_user">
 
 <h1><%= @user.best_name %></h1>
+<% if @user.about_me %>
+<p class="about">
+<h3>About Me</h3>
+<%= @user.about_me %>
+</p>
+<% end %>
+
+<div class="posts_container">
+<h3>Posts</h3>
 <% @posts.each do |post| %>
   <%= render :partial => "posts/post_as_activity", :locals => {:activity => post} %>
 <% end %>
+</div>
 
 <% if @posts.size < 1 %>
   <div class="no_activity">
