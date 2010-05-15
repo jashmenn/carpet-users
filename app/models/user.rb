@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   acts_as_authentic
   # generalize_credentials_error_messages true
+  has_many :timeline_events_users, :class_name => "TimelineEventsUsers"
+  has_many :timeline_events, :through => :timeline_events_users
 
   def self.find_by_identifier(identifier)
     if identifier =~ /^\d+$/
