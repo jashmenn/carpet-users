@@ -32,12 +32,10 @@
 
 <div class="posts_container">
 <h3>Posts</h3>
-<% @posts.each do |post| %>
-  <%= render :partial => "posts/post_as_activity", :locals => {:activity => post} %>
-<% end %>
+<%= render_timeline @activities %>
 </div>
 
-<% if @posts.size < 1 %>
+<% if !@activities || @activities.size < 1 %>
   <div class="no_activity">
     <% if @user == current_user %>
       Just starting out?<br />
